@@ -8,7 +8,6 @@ Using constructors to add new book entries to a library
 
 
 TODO:
-- Toggle Read/Unread
 - Remove book from library
 - Form doesn't move when first book added
 - Local Storage

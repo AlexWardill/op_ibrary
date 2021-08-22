@@ -13,46 +13,38 @@ form.addEventListener('submit', (e) => {
     // add to library
     let inputs = [titleInput, authorInput, pagesInput];
     
-    function resetLabel(label) {
-        switch (label) {
-            case titleInput:
-                label.innerHTML = titleInput.innerHTML;
-                break;
+    // Check each input and add/remove red border, add/remove border warning 
+    function decorateInputs() {
+        inputs.forEach(elt => {
+            let warningMessage = `<span class="empty-warning">This field is required</span>`;
+        
+        if (elt.value == '') {
+            elt.classList.add('border-warning');
+            (!elt.previousElementSibling.innerHTML.includes(warningMessage)) ? // if no warning message, add warning message
+            elt.previousElementSibling.innerHTML += warningMessage : '';
 
-            case authorInput:
-                label.innerHTML = authorInput.innerHTML;
-                break;
-
-            case pagesInput:
-                label.innerHTML = pagesInput.innerHTML;
-                break;
-            
-        }
+            // else, non-empty input, remove red border and warning message
+            // since warning message always accompanies red border, sufficient to just check for red border
+        } else if  (elt.classList.contains('border-warning')) { 
+            elt.classList.remove('border-warning'); 
+            elt.previousElementSibling.innerHTML = elt.previousElementSibling.innerHTML.split('<')[0];
+            }
+        
+    })
     }
     // make empty inputs have red border
     // remove red border if field was previously empty and is now filled
     if (inputs.map(elt => elt.value).includes('')) {
-        inputs.forEach(elt => {
-            let warningMessage = `<span class="empty-warning">This field is required</span>`;
-            if (elt.classList.contains('border-warning')) {
-                elt.classList.remove('border-warning');
-                resetLabel(elt.previousSibling);
-            }
+        decorateInputs();
+        Library.clearRender();
+        Library.render();
 
-            if (elt.value == '') {
-                elt.classList.add('border-warning');
-                (!elt.previousElementSibling.innerHTML.includes(warningMessage)) ?
-                elt.previousElementSibling.innerHTML += warningMessage : '';
-            }
-
-            
-            Library.clearRender();
-            Library.render();
-        })
         // don't add the empty book, return early
         return;
     }
     
+    // when book successfully added, reset all borders, leave none red
+    decorateInputs();
 
     const new_book = new Book(titleInput.value, authorInput.value, pagesInput.value, completedInput);
     Library.addToLibrary(new_book);
@@ -86,17 +78,18 @@ const Library = {
         card.classList.add('card'); 
 
         const titleText = document.createElement('div');
-        titleText.innerText = `Title: ${book.title}`;
+        titleText.innerHTML = `<b>Title</b>: ${book.title}`;
 
         const authorText = document.createElement('div');
-        authorText.innerText = `Author: ${book.author}`;
+        authorText.innerHTML = `<b>Author</b>: ${book.author}`;
 
         const pageText = document.createElement('div');
-        pageText.innerText = `Page number: ${book.pages}`;
+        pageText.innerHTML = `<b>Page number</b>: ${book.pages}`;
 
         const toggleBtn = document.createElement('button');
         toggleBtn.classList.add('btn');
         toggleBtn.classList.add('toggle-btn');
+        toggleBtn.style.marginTop = '20px';
         toggleBtn.innerText = `${book.completed}`;
         (book.completed == 'Completed') ? toggleBtn.classList.add('btn-primary') : toggleBtn.classList.add('btn-secondary');
 
