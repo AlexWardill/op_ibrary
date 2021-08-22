@@ -9,26 +9,31 @@
     <title>Library</title>
 </head>
 <body>
-    <form id="form" onsubmit="return false">
-        <div class="form-group">
-          <label for="title" class="col-form-label">Title:</label>
-          <input type="text" class="form-control" id="title">
+    <section class="section" id="form-container">
 
-          <label for="author" class="col-form-label">Author:</label>
-          <input type="text" class="form-control" id="author"></input>
-          
-          <label for="pages" class="col-form-label">No. of Pages:</label>
-          <input type="number" class="form-control" id="pageno">
-
-          <label for="completed" class="col-form-label" id="checkbox-label">Completed</label>
-          <input type="checkbox" id="completed" name="completed"></input>
+        <form id="form" onsubmit="return false">
+            <div class="form-group">
+              <label for="title" class="col-form-label">Title:</label>
+              <input type="text" class="form-control" id="title">
+    
+              <label for="author" class="col-form-label">Author:</label>
+              <input type="text" class="form-control" id="author"></input>
+              
+              <label for="pages" class="col-form-label">No. of Pages:</label>
+              <input type="number" class="form-control" id="pageno">
+    
+              <label for="completed" class="col-form-label" id="checkbox-label">Completed</label>
+              <input type="checkbox" id="completed" name="completed"></input>
+            </div>
+        </form>
+        <div id="btn-wrapper">
+            <button class="btn btn-primary" id="submit-btn" type="submit" form="form">Add to Library</button>
         </div>
-    </form>
-    <div id="btn-wrapper">
-        <button class="btn btn-primary" id="submit-btn" type="submit" form="form">Add to Library</button>
-    </div>
+    </section>
 
-    <div id="library"></div>
+    <section class="section" id="library-container">
+        <div id="library"></div>
+    </section>
 
     
 
