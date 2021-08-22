@@ -8,7 +8,9 @@ Using constructors to add new book entries to a library
 
 
 TODO:
-- Position form so it doesn't move
+- Style cards to they're all uniform height ** how to account for edge case (super long inputs)
+
+- Side Scrolling div for Book overflow
 - Remove book from library
 - Local Storage
-- Side Scrolling div for Book overflow
+    - render library on page load
