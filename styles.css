@@ -41,3 +41,22 @@ body {
 #library div {
     margin: 10px;
 }
+
+form input:focus {
+    border: gray;
+}
+
+.empty-warning {
+    color : red;
+    font-size : 90%;
+    vertical-align: center;
+    float: right;
+}
+
+.col-form-label {
+    width: 100%;
+}
+
+#checkbox-label {
+    width: auto;
+}
