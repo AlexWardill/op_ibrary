@@ -9,8 +9,6 @@ Click for [live demo](https://alexwardill.github.io/op_ibrary/)
 * Handling empty inputs - red styling + warning message, not rendering empty inputs.
 * LocalStorage - setItem(), removeItem()
 
-
-------------------
 # Criticism
 * Code layout feels inefficient
     * Nested functions and methods
@@ -18,12 +16,12 @@ Click for [live demo](https://alexwardill.github.io/op_ibrary/)
     * Styling is ad hoc and not reusable or responsive, e.g location of remove button done by eyeballing it with percentages of a card (whose height is not always fixed!!!)
 
 ------------------
-# TODO:
-### FUNCTIONALITY
+### TODO:
+#### FUNCTIONALITY
 * Toggling Complete/Incomplete updates localStorage. 
     * (I feel like this might might be a bit tricky with just vanilla?...or I'm just being lazy)
     * **Issue** - Toggling Complete/Incomplete only manipulates the HTML and not the state of the object it pertains to.
 
 
-### STYLE
+#### STYLE
 * Side Scrolling div for Book overflow
