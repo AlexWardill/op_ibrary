@@ -1,7 +1,20 @@
 const libraryContainer = document.querySelector('#library');
 const form = document.querySelector('#form');
 
-// form submit event
+// on load, add all localStorage to Library.books 
+// 
+// render
+window.addEventListener('load', () => {
+    Library.clearRender();
+    let keys = Object.keys(localStorage);
+    console.log(keys)
+    for (let i = 0; i < keys.length; i++) {
+        Library.books.push((JSON.parse(localStorage[keys[i]])));
+    }
+    Library.render();
+});
+
+// SUBMIT
 form.addEventListener('submit', (e) => {
     e.preventDefault;
     Library.clearRender();
@@ -12,6 +25,8 @@ form.addEventListener('submit', (e) => {
     let completedInput = (document.querySelector('#completed').checked) ? 'Completed' : 'Incomplete';
     // add to library
     let inputs = [titleInput, authorInput, pagesInput];
+    
+    
     
     // Check each input and add/remove red border, add/remove border warning 
     function decorateInputs() {
@@ -48,11 +63,15 @@ form.addEventListener('submit', (e) => {
 
     const new_book = new Book(titleInput.value, authorInput.value, pagesInput.value, completedInput);
     Library.addToLibrary(new_book);
+
+    // add new book to localStorage
+    localStorage.setItem(`${new_book.title}`, JSON.stringify(new_book));
+
     // render library
     Library.render();
     //clear form inputs
     form.reset();
-})
+});
 
 // book and library methods
 function Book(Title, Author, Pages, Completed) {
@@ -62,6 +81,9 @@ function Book(Title, Author, Pages, Completed) {
     this.completed = Completed;
 }
 
+// Library methods, 
+// addToLibrary, removeFromLibrary, render, clearRender, 
+// toggle, remove button EventListeners
 const Library = {
     books : [],
     addToLibrary(book) {
@@ -69,8 +91,13 @@ const Library = {
     },
     removeFromLibrary(book) {
         Library.books = this.books.filter(item => item !== book);
+        localStorage.removeItem(book.title);
     }, 
     render() {
+        // add localStorage to Library.books
+        // for al
+        //localStorage.forEach(item => console.log(item));
+
         // renders all books in Library.books
         Library.books.forEach(book => {
 
@@ -104,16 +131,17 @@ const Library = {
         card.appendChild(toggleBtn);
         libraryContainer.appendChild(card);
 
-        //toggle completed button
+        // TOGGLE
         toggleBtn.addEventListener('click', (e) => {
             let btn = e.target;
             btn.classList.toggle('btn-primary');
             btn.classList.toggle('btn-secondary');
-            (btn.innerText == 'Completed') ? btn.innerText = 'Incomplete' : btn.innerText = 'Completed'; 
+            (btn.innerText == 'Completed') ? btn.innerText = 'Incomplete' : btn.innerText = 'Completed';
+            console.log(this.books);
         });
 
-        // remove book on click
-        removeBtn.addEventListener('click', (e) => {
+        // REMOVE
+        removeBtn.addEventListener('click', () => {
             let bookTitle = titleText.innerHTML.split('</b>: ')[1]
             let bookToRemove = Library.books.find(book => book.title === bookTitle);
             Library.removeFromLibrary(bookToRemove);
@@ -129,6 +157,8 @@ const Library = {
     }
 }
 
-// click on remove
-// find the book in myLibrary with title of book.title
-// Library.removeFromLibrary()
+// Local Storage
+// localStorage.clear();
+console.log(localStorage);
+
+// window.localStorage.clear()
