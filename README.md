@@ -8,7 +8,7 @@ Click for [live demo](https://alexwardill.github.io/op_ibrary/)
 * Familiarity with Git, developing new features in "develop", "cardDesign" branches before merging with main.
 * Handling empty inputs - red styling + warning message, not rendering empty inputs.
 * LocalStorage - setItem(), removeItem()
-* 
+
 # Criticism
 * Code layout feels inefficient
     * Functions/methods nested inside objects
