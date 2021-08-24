@@ -8,14 +8,13 @@ Click for [live demo](https://alexwardill.github.io/op_ibrary/)
 * Familiarity with Git, developing new features in "develop", "cardDesign" branches before merging with main.
 * Handling empty inputs - red styling + warning message, not rendering empty inputs.
 * LocalStorage - setItem(), removeItem()
-
-</br>
+* 
 # Criticism
 * Code layout feels inefficient
     * Functions/methods nested inside objects
     * Splitting form data into an object (for passing through functions and localStorage), and HTML (for rendering and manipulating the cards) makes state management difficult. (as far as I'm aware)
     * Styling is ad hoc and not reusable or responsive, e.g location of remove button done by eyeballing it with percentages of a card (whose height is not always fixed!!!)
-<br/>
+
 ----
 
 ### TODO:
