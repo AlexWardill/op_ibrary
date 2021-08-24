@@ -86,6 +86,8 @@ form input:focus {
     flex-direction: column;
     justify-content: space-between;
     flex-wrap: wrap;
+
+    position: relative;
 }
 
 .card div {
@@ -94,5 +96,16 @@ form input:focus {
 }
 
 
+.remove-btn {
+    position: absolute;
+    left: 65%;
+    bottom: 87%;
+    color: rgb(146, 146, 146, 0.8);
+    transition: all .2s ease-in-out;
+}
 
+.remove-btn:hover {
+    cursor: pointer;
+    color: rgb(70, 69, 69);
+}
 

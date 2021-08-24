@@ -77,6 +77,10 @@ const Library = {
         const card = document.createElement('div');
         card.classList.add('card'); 
 
+        const removeBtn = document.createElement('div');
+        removeBtn.classList.add('remove-btn');
+        removeBtn.innerHTML = 'remove';
+
         const titleText = document.createElement('div');
         titleText.innerHTML = `<b>Title</b>: ${book.title}`;
 
@@ -93,6 +97,7 @@ const Library = {
         toggleBtn.innerText = `${book.completed}`;
         (book.completed == 'Completed') ? toggleBtn.classList.add('btn-primary') : toggleBtn.classList.add('btn-secondary');
 
+        card.appendChild(removeBtn);
         card.appendChild(titleText);
         card.appendChild(authorText);
         card.appendChild(pageText);
@@ -107,6 +112,16 @@ const Library = {
             (btn.innerText == 'Completed') ? btn.innerText = 'Incomplete' : btn.innerText = 'Completed'; 
         });
 
+        // remove book on click
+        removeBtn.addEventListener('click', (e) => {
+            let bookTitle = titleText.innerHTML.split('</b>: ')[1]
+            let bookToRemove = Library.books.find(book => book.title === bookTitle);
+            Library.removeFromLibrary(bookToRemove);
+            Library.clearRender();
+            Library.render();
+            
+        });
+
         });
     },
     clearRender() {
@@ -114,3 +129,6 @@ const Library = {
     }
 }
 
+// click on remove
+// find the book in myLibrary with title of book.title
+// Library.removeFromLibrary()
