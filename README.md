@@ -1,6 +1,6 @@
 Odin Project -
 Using constructors to add new book entries to a library <br />
-Click for [live demo](https://alexwardill.github.io/op_ibrary/)
+Click for ####[live demo](https://alexwardill.github.io/op_ibrary/)
 
 # Learning outcomes
 * Familiarity with basics of objects, defining constructor functions and methods.
